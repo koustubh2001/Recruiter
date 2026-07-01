@@ -5,8 +5,9 @@ import placementIcon from "../assets/placement.png";
 import recruiterIcon from "../assets/recruiter.png";
 import studentIcon from "../assets/student.png";
 import trainingIcon from "../assets/training.png";
-
-import {Mail,Search,ChevronDown,HelpCircle} from "lucide-react";
+import helpIcon from "../assets/help.png";
+import searchIcon from "../assets/search.png";
+import downIcon from "../assets/down.png"; 
 
 const Recruiter = () => {
 const [selectedRole, setSelectedRole] = useState("Recruiter");
@@ -84,10 +85,10 @@ setFormData({
 };
 
 
-return (
-    <div className="register-container"> 
-    <div className="left-panel">
-        <div className="brand">
+return (  
+    <div className="recruiter-container"> 
+    <div className="recruiter-left-panel">
+        <div className="recruiter-brand">
         <img src={logo} alt="logo" />
         <div>
             <h2>EDUHIRE</h2>
@@ -95,7 +96,7 @@ return (
         </div>
     </div>
 
-    <div className="left-content">
+    <div className="recruiter-left-content">
     <h1>Create Your Account</h1>
     <p>
         Join CampusConnect and be part of a platform that connects talent
@@ -103,7 +104,7 @@ return (
     </p>
 
     <h5>SELECT YOUR ROLE</h5>
-        <div className="role-list">
+        <div className="recruiter-role-list">
             {roles.map((role) => (
             <button
                 key={role.title}
@@ -112,7 +113,7 @@ return (
                 onClick={() => setSelectedRole(role.title)}
                 aria-pressed={selectedRole === role.title}
             >
-    <div className="role-left">
+    <div className="recruiter-role-left">
         <img src={role.icon} alt={role.title} />
         <div>
             <h4>{role.title}</h4>
@@ -128,14 +129,15 @@ return (
     </div> 
     </div>
 
-    <div className="support">
-        <HelpCircle size={16} /> Need help? Contact support@campusconnect.com
-    </div>
+    <div className="recruiter-support">
+    <img src={helpIcon} alt="Help" className="recruiter-support-icon" />
+    <span>Need help? Contact support@campusconnect.com</span>
+</div>
     </div>
 
-    <div className="right-panel">
-    <div className="form-header">
-        <div className="header-logo-box">
+    <div className="recruiter-right-panel">
+    <div className="recruiter-form-header">
+        <div className="recruiter-header-logo-box">
     <img src={recruiterIcon} alt="User Registration Logo" />
     </div>
         <div>
@@ -144,9 +146,9 @@ return (
         </div>
     </div>
 
-<form className="register-form" onSubmit={handleSubmit}>
+<form className="recruiter-register-form" onSubmit={handleSubmit}>
     <div className="input-group">
-            <label htmlFor="fullName"> Full Name</label>
+        <label htmlFor="fullName"> Full Name</label>
         <input id="fullName" type="text" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="John Doe"/>
         </div>
 
@@ -154,8 +156,7 @@ return (
         <div className="input-group">
         <label htmlFor="email">Official Email Address</label>
         <div className="input-icon">
-        <input id="email" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@company.com"/>
-            <Mail size={16} style={{ color: '#9ca3af' }} />
+        <input id="email" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@company.com"/> 
         </div>
     </div>
 
@@ -163,8 +164,8 @@ return (
         <label htmlFor="phone">Phone Number</label>
         <div className="phone-layout">
         <div className="country-dropdown">
-        <span>+91</span>
-        <ChevronDown size={14} style={{ color: '#6b7280' }} />
+        <span>+91 </span> 
+        <img src={downIcon} alt="Dropdown" className="dropdown-icon"/>
         </div>
         <input id="phone" type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder="555-0123" />
         </div>
@@ -175,8 +176,8 @@ return (
         <label htmlFor="company">Company / Organization Name</label>
         <div className="input-icon">
         <input id="company" type="text" name="company" value={formData.company} onChange={handleChange} placeholder="Search your company..."/>
-        <Search size={16} style={{ color: '#111827' }} />
-        </div>
+        <img src={searchIcon} alt="Search" className="search-icon" />
+    </div>
     </div>
 
     <div className="row">
@@ -190,7 +191,7 @@ return (
             <option value="healthcare">Healthcare</option>
             <option value="education">Education</option>
         </select>
-            <ChevronDown size={16} />
+        <img src={downIcon} alt="Dropdown" className="dropdown-icon"/>
         </div>
     </div>
 
@@ -205,11 +206,7 @@ return (
         <label htmlFor="password">Password</label>
         <div className="password-box">
         <input id="password" type={showPassword ? "text" : "password"} name="password" value={formData.password} onChange={handleChange} alt="Password" placeholder="Enter your password"/>
-        <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-        > 
-        </button>
+        <button type="button" onClick={() => setShowPassword(!showPassword)}> </button>
         </div>
     </div>
 
@@ -226,30 +223,25 @@ return (
         </div>
     </div>
 
-    <div className="terms">
+    <div className="recruiter-terms">
         <input id="terms-check" type="checkbox" name="terms" checked={formData.terms} onChange={handleChange}/>
         <label htmlFor="terms-check">
-            I agree to the <span>Terms of Service</span> and <span>Privacy Policy</span>.
+        I agree to the <span>Terms of Service</span> and <span>Privacy Policy</span>.
         </label>
     </div>
 
-    <button className="register-btn" type="submit">
-        Complete Registration
-    </button>
-
-    <div className="login-link">
-        Already have an account?<a href="/">Log in</a>
-    </div>
+    <button className="recruiter-register-btn" type="submit">Complete Registration</button>
+    <div className="recruiter-login-link">Already have an account?<a href="/">Log in</a></div>
 </form>
 
     </div>
     {showPopup && (
-    <div className="popup-overlay">
-    <div className="popup-box">
-    <div className="success-icon">✓</div>
+    <div className="recruiter-popup-overlay">
+    <div className="recruiter-popup-box">
+    <div className="recruiter-success-icon">✓</div>
     <h2>Registration Successful!</h2>
     <p>Your account has been created successfully.</p>
-    <button className="popup-btn" onClick={() => setShowPopup(false)}>OK</button>
+    <button className="recruiter-popup-btn" onClick={() => setShowPopup(false)}>OK</button>
     </div>
 </div>
 )}
